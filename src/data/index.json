@@ -1,0 +1,12 @@
+{
+    "bannerList": [{
+            "url": "/goodDetail/1",
+            "img": "https://static.vux.li/demo/1.jpg"
+        },{
+            "url": "/goodDetail/1",
+            "img": "https://static.vux.li/demo/2.jpg"
+        },{
+            "url": "/goodDetail/1",
+            "img": "https://static.vux.li/demo/3.jpg"
+        }]
+}
