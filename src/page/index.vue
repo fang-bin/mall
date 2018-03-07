@@ -168,9 +168,7 @@ export default {
             }
         }
     }
-    .module{
-
-    }
+    
 }
 </style>
 

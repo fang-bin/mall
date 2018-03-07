@@ -90,6 +90,14 @@ Vue.prototype.$toast = toast;
 
 
 /* eslint-disable no-new */
+
+Vue.mixin({
+  created(){
+    console.log('a');
+  }
+});
+
+
 new Vue({
   el: '#app',
   store,
