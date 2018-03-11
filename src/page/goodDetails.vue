@@ -27,7 +27,7 @@
             </li>
         </ul>
         <div class="goods-detail">
-            <div class="choice">
+            <div class="choice" @click="showPop">
                 <p>选择</p>
                 <p>颜色，尺码<img src="../common/img/m-right.png"></p>
             </div>
@@ -66,40 +66,49 @@
         </ul>
         <mt-popup
             v-model="popupVisible"
-            position="bottom">
+            position="bottom"
+            :style="{width: '100%'}">
             <div class="box">
-                方斌
+                <div class="spec-box">
+                    <div class="spec-header">
+                        <div class="img-box">
+                            <img src="">
+                        </div>
+                        <div class="title-box">
+                            <div>
+                                <h2>双层精品哈哈哈哈拉拉阿拉哟爽肤水</h2>
+                                <p>限购1件</p>
+                                <h5>¥2999.00 <span v-red>每满50抵扣25</span></h5>
+                            </div>
+                        </div>
+                        <div class="close-icon" @click="hidePop">
+                            <img src="../common/img/close.png">
+                        </div>
+                    </div>
+                    <ul class="spec-content">
+                        <li>
+                            <p class="name">颜色</p>
+                            <ul>
+                                <li>红色</li>
+                                <li>黑色</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="name">尺码</p>
+                            <ul>
+                                <li>M</li>
+                                <li>L</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="spec-footer">
+                        <li>加入购物车</li>
+                        <li>立即购买</li>
+                    </ul>
+                </div>
             </div>
         </mt-popup>
-        <div class="cover"></div>
-        <div class="spec-box">
-            <div class="spec-header">
-                <div class="img-box">
-                    <img src="">
-                </div>
-                <div class="title-box">
-                    <div>
-                        <h2>双层精品哈哈哈哈拉拉阿拉哟爽肤水</h2>
-                        <p>限购1件</p>
-                        <h5>¥2999.00 <span v-red>每满50抵扣25</span></h5>
-                    </div>
-                </div>
-                <div class="close-icon">
-                    <img src="../common/img/close.png">
-                </div>
-            </div>
-            <ul class="spec-content">
-                <li>
-                    <p class="name">
-                        颜色
-                    </p>
-                    <div>
-                        <span></span>
-                    </div>
-                </li>
-            </ul>
-            <div class="spec-footer"></div>
-        </div>
+        <!-- <div class="cover"></div> -->
     </div>
 </template>
 
@@ -153,6 +162,9 @@ export default {
     methods: {
         showPop(){
             this.popupVisible = true;
+        },
+        hidePop(){
+            this.popupVisible = false;
         },
         onNavClick(index){
             this.swiper.slideTo(index,200,false);
@@ -327,18 +339,24 @@ export default {
         height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
     }
-    .spec-box{
-        z-index: 4;
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    .box{
+        background-color: #fff;
         width: 100%;
+    }
+    .spec-box{
+        // z-index: 4;
+        // position: absolute;
+        // bottom: 0;
+        // left: 0;
+        width: 100%;
+        position: relative;
         background-color: #fff;
         .spec-header{
             display: flex;
             justify-content: space-between;
             padding: 0 pr(24px);
             height: pr(180px);
+            border-bottom: 1px solid #eee;
             .img-box{
                 width: pr(200px);
                 height: pr(200px);
@@ -387,6 +405,52 @@ export default {
                 img{
                     width: 100%;
                 }
+            }
+        }
+        .spec-content{
+            padding: 0 pr(24px);
+            font-size: 12px;
+            color: #555555;
+            >li{
+                margin-top: pr(30px);
+                line-height: pr(55px);
+                display: flex;
+                flex-wrap: wrap;
+                p{
+                    height: pr(55px);
+                    width: pr(80px);
+                    text-align: left;
+                }
+                >ul{
+                    display: flex;
+                    flex-wrap: wrap;
+                    li{
+                        box-sizing: border-box;
+                        height: pr(55px);
+                        line-height: pr(55px);
+                        padding: 0 pr(40px);
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        margin-right: pr(30px);
+                    }
+                }
+            }
+        }
+        .spec-footer{
+            margin-top: pr(30px);
+            height: pr(100px);
+            line-height: pr(100px);
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #fff;
+            li{
+                width: 50%;
+                background-color: #ff9600;
+            }
+            & li:last-child{
+                background-color: #e3393c;
             }
         }
     }

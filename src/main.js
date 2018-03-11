@@ -91,11 +91,11 @@ Vue.prototype.$toast = toast;
 
 /* eslint-disable no-new */
 
-Vue.mixin({
-  created(){
-    console.log('a');
-  }
-});
+// Vue.mixin({
+//   created(){
+//     console.log('a');
+//   }
+// });
 
 
 new Vue({
