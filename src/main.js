@@ -11,6 +11,8 @@ import { Toast, MessageBox, Popup, Lazyload } from 'mint-ui';
 import * as types from './store/mutation-types'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import * as utils from './config/utils'
+import './config/rem'
 
 
 
@@ -35,18 +37,17 @@ const toast = function (txt){
   });
 }
 
-const history = window.sessionStorage;
-history.clear();
-let historyCount = history.getItem('count') * 1 || 0;
-history.setItem('/', 0);
+utils.removeSession('count');
+let historyCount = utils.getSession('count') *1 || 0;
+utils.setSession('/', 0);
 router.beforeEach((to, from, next) => {
   //播放加载动画
   store.commit(types.UPDATE_LOADING, {isLoading : true});
   if (to.meta.title){   //根据路由组件设置标题名
     document.title = to.meta.title;
   }
-  const toIndex = history.getItem(to.path);
-  const fromIndex = history.getItem(from.path);
+  const toIndex = utils.getSession(to.path);
+  const fromIndex = utils.getSession(from.path);
   if (toIndex){      //根据记录的路由先后顺序，调整页面切换的动画
     if (!fromIndex || parseInt(toIndex, 10) > parseInt(fromIndex, 10) || (toIndex === '0' && fromIndex === '0')){
       store.commit(types.UPDATE_DIRECTION, {direction : 'forward'});
@@ -55,17 +56,17 @@ router.beforeEach((to, from, next) => {
     }
   }else{
     ++historyCount;
-    history.setItem('count',historyCount);
-    to.path !== '/' && history.setItem(to.path, historyCount);
+    utils.setSession('count', historyCount);
+    to.path !== '/' && utils.setSession(to.path, historyCount);
     store.commit(types.UPDATE_DIRECTION, {direction : 'forward'});
   }
   next()
 });
 
 router.afterEach((to, from) => {
-  setTimeout(() => {
+  // setTimeout(() => {
     store.commit(types.UPDATE_LOADING, {isLoading : false});
-  }, 200);
+  // }, 200);
 });
 
 /* 自定义指令  */
@@ -89,8 +90,6 @@ Vue.directive('red',{   //红色标签
 Vue.prototype.$message = MessageBox;
 Vue.prototype.$toast = toast;
 
-
-/* eslint-disable no-new */
 
 // Vue.mixin({
 //   created(){
