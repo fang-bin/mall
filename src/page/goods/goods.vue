@@ -19,17 +19,17 @@
         <ul class="discounts">
             <li>
                 <p>展业金</p>
-                <p>满100可抵70<img src="../common/img/m-right.png"></p>
+                <p>满100可抵70<img src="../../img/m-right.png"></p>
             </li>
             <li>
                 <p>活动</p>
-                <p>国庆大促销，新品特价<img src="../common/img/m-right.png"></p>
+                <p>国庆大促销，新品特价<img src="../../img/m-right.png"></p>
             </li>
         </ul>
         <div class="goods-detail">
             <div class="choice" @click="showPop">
                 <p>选择</p>
-                <p>颜色，尺码<img src="../common/img/m-right.png"></p>
+                <p>颜色，尺码<img src="../../img/m-right.png"></p>
             </div>
             <ul class="other-detail">
                 <li>商品库存：5000件</li>
@@ -56,10 +56,10 @@
         </div>
         <ul class="bot-nav">
             <li class="kefu">
-                <img src="../common/img/d-weixin.png">
+                <img src="../../img/d-weixin.png">
             </li>
             <li class="gwc">
-                <img src="../common/img/d-gwc.png">
+                <img src="../../img/d-gwc.png">
             </li>
             <li class="add-cart">加入购物车</li>
             <li class="now-buy">立即购买</li>
@@ -75,7 +75,7 @@
 
 <script>
 import { Tab, TabItem, Sticky, Checker, CheckerItem, XNumber, Group, Cell } from 'vux'
-import detailsData from '../data/goodsDetails.json';
+import detailsData from '../../data/goods.json'
 import specBox from './specBox';
 const goodsNav = () => ['商品介绍','规格参数','购买须知'];
 export default {
@@ -150,7 +150,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../common/css/pxToRem.scss";
 @function pr($px) {
     @return $px / 75px * 1rem;
 }

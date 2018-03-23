@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="close-icon" @click="hidePop">
-                <img src="../common/img/close.png">
+                <img src="../../img/close.png">
             </div>
         </div>
         <ul class="spec-content">
@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../common/css/pxToRem.scss";
 @function pr($px) {
     @return $px / 75px * 1rem;
 }

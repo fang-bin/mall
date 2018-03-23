@@ -15,10 +15,6 @@ function ball_animate(obj0, obj1, obj2, obj3) {
             return c * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375) + b;
         }
     }
-    // var pendant = document.getElementById(obj0) || document.getElementsByClassName(obj0)[0],
-    //     menu = document.getElementById(obj1) || document.getElementsByClassName(obj1)[0],
-    //     feiji0 = document.getElementById(feiji0) || document.getElementsByClassName(feiji0)[0],
-    //     feiji1 = document.getElementById(feiji1) || document.getElementsByClassName(feiji1)[0],
     var pendant = obj0,
         menu = obj1,
         feiji0 = obj2,

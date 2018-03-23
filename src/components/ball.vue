@@ -1,55 +1,55 @@
 <template>
 <div>
     <div class="i-pendant" id="pendant" ref="pendant">
-        <img src="../common/img/feiji0.gif" class="feiji0" ref="feiji0"/>
-        <img src="../common/img/feiji1.gif" class="feiji1" ref="feiji1"/>
+        <img src="../img/feiji0.gif" class="feiji0" ref="feiji0"/>
+        <img src="../img/feiji1.gif" class="feiji1" ref="feiji1"/>
     </div>
     <ul class="menu" ref="menu">
         <li>
             <router-link to="###">
-                <img src="../common/img/go_zhuye.png">
+                <img src="../img/go_zhuye.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_gerenzhongxin.png">
+                <img src="../img/go_gerenzhongxin.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_gouwuche.png">
+                <img src="../img/go_gouwuche.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_dingdan.png">
+                <img src="../img/go_dingdan.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_gouwuka.png">
+                <img src="../img/go_gouwuka.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_shopcard.png">
+                <img src="../img/go_shopcard.png">
             </router-link>
         </li>
         <li>
             <router-link to="###">
-                <img src="../common/img/go_weixin.png">
+                <img src="../img/go_weixin.png">
             </router-link>
         </li>
     </ul>
     <div class="kefu">
-        <img src="../common/img/weixinkefu.png"/>
+        <img src="../img/weixinkefu.png"/>
         <p>微信客服 : tangdouservice123</p>
     </div>
 </div>
 </template>
 
 <script>
-import BallAni from '../common/js/ball.animate.js';
+import BallAni from '../js/ball.animate'
 export default {
 	mounted(){
 			const pendant = this.$refs.pendant,
@@ -62,7 +62,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "../common/css/pxToRem.scss";
 @function pr($px) {
     @return $px / 75px * 1rem;
 }

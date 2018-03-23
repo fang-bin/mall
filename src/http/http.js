@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
-import ZSAPP from '../common/js/custom'
+// import ZSAPP from '../common/js/custom'
+import ZSAPP from '../js/custom'
 
 axios.interceptors.request.use(config => {
 

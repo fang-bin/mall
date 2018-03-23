@@ -2,17 +2,22 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { resolve } from 'url'
 
+
+const home = r => require.ensure([], () => r(require('../page/home/home.vue')), 'home');
+const error = r => require.ensure([], () => r(require('../page/error/error.vue')), 'error');
+const goods = r => require.ensure([], () => r(require('../page/goods/goods.vue')), 'goods');
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',           //首页
-      name: 'index',
+      name: 'home',
       meta: {
         title: '首页'
       },
-      component: resolve => require(['../page/index.vue'], resolve)
+      component: home
     },
     {
       path: '/error',
@@ -20,7 +25,7 @@ export default new Router({
       meta: {
         title: '错误'
       },
-      component: resolve => require(['../page/error.vue'], resolve)
+      component: error
     },
     {
       path: '*',
@@ -32,7 +37,7 @@ export default new Router({
       meta: {
         title: '商品详情页'
       },
-      component: resolve => require(['../page/goodDetails.vue'], resolve),
+      component: goods,
       props: true
     }
   ]

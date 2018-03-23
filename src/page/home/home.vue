@@ -10,31 +10,31 @@
             <ul class="nav-box">
                 <li>
                     <router-link to="###">
-                        <img src="../common/img/my-mall.png">
+                        <img src="../../img/my-mall.png">
                         <p>我的商城</p>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="###">
-                        <img src="../common/img/shopping-car.png">
+                        <img src="../../img/shopping-car.png">
                         <p>购物车</p>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="###">
-                        <img src="../common/img/shopping-card.png">
+                        <img src="../../img/shopping-card.png">
                         <p>展业金</p>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="###">
-                        <img src="../common/img/discounts-card.png">
+                        <img src="../../img/discounts-card.png">
                         <p>购物卡</p>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="###">
-                        <img src="../common/img/shell-exchange.png">
+                        <img src="../../img/shell-exchange.png">
                         <p>贝壳兑换</p>
                     </router-link>
                 </li>
@@ -43,14 +43,14 @@
         <!-- 广告区 -->
         <div class="adv-box">
             <div class="adv-left">
-                <img src="../common/images/adv01.png">
+                <img src="../../images/adv01.png">
             </div>
             <div class="adv-right">
                 <div>
-                    <img src="../common/images/adv02.png">
+                    <img src="../../images/adv02.png">
                 </div>
                 <div>
-                    <img src="../common/images/adv03.png">
+                    <img src="../../images/adv03.png">
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
     </div>
 </template>
 <script>
-import indexJson from '../data/index.json'
+import indexJson from '../../data/home.json'
 import { Swiper, SwiperItem } from 'vux'
 export default {
     data(){
@@ -101,7 +101,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../common/css/pxToRem.scss";
 @function pr($px) {
     @return $px / 75px * 1rem;
 }

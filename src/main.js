@@ -2,9 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import ZSAPP from './common/js/custom';
+// import ZSAPP from './common/js/custom';
+import ZSAPP from './js/custom'
 import router from './router'
-import axios from './utils/http'
+import axios from './http/http'
 import store from './store'
 import { Toast, MessageBox, Popup, Lazyload } from 'mint-ui';
 import * as types from './store/mutation-types'
