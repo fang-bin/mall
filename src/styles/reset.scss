@@ -232,12 +232,3 @@ video {
 }
 
 
-
-
-
-
-// 计算rem
-@function pr($px) {
-  @return $px / 75px * 1rem;
-}
-

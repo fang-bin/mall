@@ -36,6 +36,5 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "./common/css/loading.scss";
-@import "./styles/reset.scss";
+@import "./styles/reset";
 </style>

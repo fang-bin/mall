@@ -5,5 +5,31 @@
         "img": "https://static.vux.li/demo/2.jpg"
     },{
         "img": "https://static.vux.li/demo/3.jpg"
-    }]
+    }],
+    "spec":[{
+        "name": "尺寸",
+        "pro": [
+            {
+                "proId": "1",
+                "name": "大"
+            },{
+                "proId": "2",
+                "name": "中"
+            }, {
+              "proId": "3",
+              "name": "小"
+            }]
+        },{
+          "name": "颜色",
+          "pro": [{
+            "proId": "4",
+            "name": "红"
+          }, {
+            "proId": "5",
+            "name": "黄"
+          }, {
+            "proId": "6",
+            "name": "蓝"
+          }]
+        }]
 }

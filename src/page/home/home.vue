@@ -101,9 +101,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@function pr($px) {
-    @return $px / 75px * 1rem;
-}
+@import '../../styles/mixin.scss';
 .index-wrap{
     overflow-y: scroll;
     .top{
@@ -115,19 +113,17 @@ export default {
             }
         }
         .nav-box{
-            display: flex;
+            @include fs(flex-start);
             background-color: #fff;
             li{
                 width: 20%;
                 height: pr(192px);
                 a{
+                    @include fs(center);
                     width: 100%;
                     height: 100%;
-                    display: flex;
                     text-align: center;
-                    display: flex;
                     flex-direction: column;
-                    justify-content: center;
                     align-items: center;
                     p{
                         line-height: 12px;
@@ -143,8 +139,7 @@ export default {
     }
     .adv-box{
         margin: pr(24px);
-        display: flex;
-        justify-content: space-between;
+        @include fs;
         div{
             width: pr(340px);
             height: pr(330px);
@@ -154,9 +149,8 @@ export default {
             }
         }
         .adv-right{
-            display: flex;
+            @include fs;
             flex-direction: column;
-            justify-content: space-between;
             div{
                 width: 100%;
                 height: pr(155px);
