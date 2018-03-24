@@ -23,9 +23,6 @@ export default {
     chooseSpec(index, i, id){    // 选择规格的方法 id == 规格id
       this.radioArr.splice(index, 1, i);
     }
-  },
-  created(){
-    console.log(this.radioArr);
   }
 };
 </script>
@@ -41,11 +38,8 @@ export default {
   > li {
     margin-top: pr(30px);
     line-height: pr(55px);
-    display: flex;
-    flex-wrap: wrap;
     p {
       height: pr(55px);
-      width: pr(80px);
       text-align: left;
     }
     > ul {
@@ -55,14 +49,14 @@ export default {
         box-sizing: border-box;
         height: pr(55px);
         line-height: pr(55px);
-        padding: 0 pr(40px);
-        border: 1px solid #ccc;
+        padding: 0 pr(30px);
+        border: 1px solid #999;
         border-radius: 5px;
         margin-right: pr(30px);
+        margin-bottom: pr(20px);
       }
       li.act{
-        background-color: #e3393c;
-        color: #fff;
+        color: #e3393c;
         border: 1px solid #e3393c;
       }
     }

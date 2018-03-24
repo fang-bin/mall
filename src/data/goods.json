@@ -1,35 +1,51 @@
 {
-    "bannerList": [{
-        "img":"https://static.vux.li/demo/1.jpg"
-    },{
-        "img": "https://static.vux.li/demo/2.jpg"
-    },{
-        "img": "https://static.vux.li/demo/3.jpg"
-    }],
-    "spec":[{
-        "name": "尺寸",
-        "pro": [
-            {
-                "proId": "1",
-                "name": "大"
-            },{
-                "proId": "2",
-                "name": "中"
-            }, {
-              "proId": "3",
-              "name": "小"
-            }]
-        },{
-          "name": "颜色",
-          "pro": [{
-            "proId": "4",
-            "name": "红"
-          }, {
-            "proId": "5",
-            "name": "黄"
-          }, {
-            "proId": "6",
-            "name": "蓝"
-          }]
-        }]
+  "goodsName": "Philips/飞利浦空气净化器AC4076家用除甲醛雾霾烟尘PM2.5杀菌",
+  "goodsTip": "新国标之选 高效滤网 除雾霾甲醛 夜间静音模式",
+  "bannerList": [{
+    "img": "https://static.vux.li/demo/1.jpg"
+  }, {
+    "img": "https://static.vux.li/demo/2.jpg"
+  }, {
+    "img": "https://static.vux.li/demo/3.jpg"
+  }],
+  "spec": [{
+    "name": "尺寸",
+    "pro": [{
+      "proId": "1",
+      "name": "大"
+    }, {
+      "proId": "2",
+      "name": "中"
+    }, {
+      "proId": "3",
+      "name": "小"
+    }]
+  }, {
+    "name": "颜色",
+    "pro": [{
+      "proId": "4",
+      "name": "红"
+    }, {
+      "proId": "5",
+      "name": "黄"
+    }, {
+      "proId": "6",
+      "name": "蓝"
+    }]
+  }, {
+    "name": "物品价格",
+    "pro": [{
+        "proId": "7",
+        "name": "贵"
+      },
+      {
+        "proId": "8",
+        "name": "中等"
+      },
+      {
+        "proId": "9",
+        "name": "便宜哈哈哈哈哈哈哈哈哈哈哈哈哈"
+      }
+    ]
+  }]
 }

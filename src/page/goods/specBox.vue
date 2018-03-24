@@ -17,6 +17,7 @@
             </div>
         </div>
         <spec-choose :specData="specData"></spec-choose>
+        <number-box :min="3" :max="100" :step="2" v-model="val"></number-box>
         <ul class="spec-footer">
             <li>加入购物车</li>
             <li>立即购买</li>
@@ -27,19 +28,28 @@
 
 <script>
 import specChoose from './specChoose'
+import numberBox from './numberBox'
 export default {
   data() {
-    return {};
+    return {
+      val: '',   //商品数量数量
+    };
   },
   methods: {
     hidePop() {
-      this.$emit("hidePop");
+      this.$emit("hideSpec");
     }
   },
   components: {
-    specChoose
+    specChoose,     //规格选择
+    numberBox,      //数量选择
   },
-  props:['specData']
+  props:['specData'],
+  watch:{
+    val: function (newVal, oldVal){
+      console.log(newVal);
+    }
+  }
 };
 </script>
 

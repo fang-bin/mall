@@ -1,33 +1,22 @@
 <template>
     <div class="details-wrap">
-        <div class="banner-box">
-            <swiper :options="bannerSwiper" ref="bannerSwiper">
-                <swiper-slide v-for="(item,index) in bannerList" :key="index">
-                    <img :src="item.img">
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
-        </div>
-        <div class="tit-box">
-            <h1>Philips/飞利浦空气净化器AC4076家用除甲醛雾霾烟尘PM2.5杀菌</h1>
-            <p>新国标之选 高效滤网 除雾霾甲醛 夜间静音模式</p>
-        </div>
+        <goods-head :data="detailsData"></goods-head>
         <div class="price-box">
             <p class="l-price"><span class="rmb-logo">¥</span><span class="now-price">999.00</span></p>
             <p class="r-price">原价：¥1099.00</p>
         </div>
         <ul class="discounts">
-            <li>
+            <li @click="discActVisible = showDiscPop = true">
                 <p>展业金</p>
                 <p>满100可抵70<img src="../../img/m-right.png"></p>
             </li>
-            <li>
+            <li @click="discActVisible = true; showDiscPop = false;">
                 <p>活动</p>
                 <p>国庆大促销，新品特价<img src="../../img/m-right.png"></p>
             </li>
         </ul>
         <div class="goods-detail">
-            <div class="choice" @click="showPop">
+            <div class="choice" @click="specVisible = true">
                 <p>选择</p>
                 <p>颜色，尺码<img src="../../img/m-right.png"></p>
             </div>
@@ -39,7 +28,7 @@
         </div>
         <div class="goods-content">
             <div class="sticky-wrap">
-                <sticky :check-sticky-support="false">
+                <sticky :check-sticky-support="false" ref="sticky" :offset="46">
                     <tab :line-width="2" default-color="#353535" active-color='#dd2727' v-model="navIndex" bar-active-color="#dd2727" :animate="true">
                         <tab-item v-for="(item, index) in goodsNav" :key="index" @on-item-click="onNavClick">
                             {{item}}
@@ -50,7 +39,7 @@
             <swiper :options="detailSwiper" ref="detailSwiper">
                 <swiper-slide v-for="(item,index) in goodsNav" :key="index">
                     I'm Slide {{index}}
-                    <p style="height: 10px;"></p>
+                    <img src="https://static.vux.li/demo/1.jpg" v-for="e in 5" :key="e">
                 </swiper-slide>
             </swiper>
         </div>
@@ -64,11 +53,21 @@
             <li class="add-cart">加入购物车</li>
             <li class="now-buy">立即购买</li>
         </ul>
+        <!-- 规格选择 -->
         <mt-popup
-            v-model="popupVisible"
+            v-model="specVisible"
             position="bottom"
             :style="{width: '100%'}">
-            <spec-box @hidePop="hidePop" :specData="specList"></spec-box>
+            <spec-box @hideSpec="specVisible = false" :specData="detailsData.spec"></spec-box>
+        </mt-popup>
+        <!-- 展业金选择 -->
+        <mt-popup
+          v-model="discActVisible"
+          position="right"
+          class="right-wrap"
+          :style="{width: '90%'}">
+          <disc-box @hideDiscAct="discActVisible = false" v-if="showDiscPop"></disc-box>
+          <act-box @hideDiscAct ="discActVisible = showDiscPop = false" v-else></act-box>
         </mt-popup>
     </div>
 </template>
@@ -78,46 +77,31 @@ import {
   Tab,
   TabItem,
   Sticky,
-  Checker,
-  CheckerItem,
-  XNumber,
-  Group,
-  Cell
 } from "vux";
 import detailsData from "../../data/goods.json";
-import specBox from "./specBox";
+import specBox from "./specBox";    //弹框--规格
+import discBox from "./discBox";    //弹框--展业金
+import actBox from './actBox';      //弹框--活动 
+import goodsHead from './goodsHead';   //头部内容
 const goodsNav = () => ["商品介绍", "规格参数", "购买须知"];
 export default {
   data() {
     const that = this;
     return {
-      bannerList: detailsData.bannerList,
-      specList: detailsData.spec,
+      detailsData: detailsData,
       bannerListIndex: 0,
-      popupVisible: false, //控制购买弹框是否弹出
+      specVisible: false, //控制规格弹框是否弹出
+      discActVisible: false, //控制展业金弹框是否弹出
+      showDiscPop: true,   //用来切换，弹框是展示活动还是展业金
       goodsNav: goodsNav(), //商品详情切换列表
       navIndex: 0, //商品详情切换列表默认索引值
-      bannerSwiper: {
-        notNextTick: true,
-        autoplay: true,
-        // effect:"coverflow",
-        // grabCursor : true,
-        loop: true,
-        setWrapperSize: true,
-        pagination: {
-          el: ".swiper-pagination"
-        },
-        paginationClickable: true,
-        mousewheelControl: true,
-        observeParents: true
-      },
       detailSwiper: {
         //商品详情页swiper设置  -->下面的swiper设置
         notNextTick: true,
         initialSlide: this.navIndex,
         autoplay: false,
         loop: false,
-        height: 10000,
+        height: '10000',
         on: {
           slideChangeTransitionStart: function() {
             that.navIndex = that.swiper.activeIndex;
@@ -133,12 +117,6 @@ export default {
   },
   props: ["id"],
   methods: {
-    showPop() {
-      this.popupVisible = true;
-    },
-    hidePop() {
-      this.popupVisible = false;
-    },
     onNavClick(index) {
       this.swiper.slideTo(index, 200, false);
     },
@@ -150,12 +128,10 @@ export default {
     Tab,
     TabItem,
     Sticky,
-    Checker,
-    CheckerItem,
-    XNumber,
-    Group,
-    Cell,
-    specBox
+    specBox,
+    goodsHead,
+    discBox,
+    actBox
   }
 };
 </script>
@@ -164,23 +140,6 @@ export default {
 @import '../../styles/mixin.scss';
 .details-wrap {
   overflow-y: scroll;
-  .tit-box {
-    background-color: #fff;
-    padding: 0 pr(24px);
-    text-align: justify;
-    h1 {
-      font-size: 15px;
-      line-height: 18px;
-      padding-top: pr(24px);
-    }
-    p {
-      font-size: 12px;
-      color: #dd2727;
-      line-height: 18px;
-      margin-top: pr(10px);
-      padding-bottom: pr(12px);
-    }
-  }
   .price-box {
     @include fs;
     background-color: #fff;
@@ -266,8 +225,15 @@ export default {
   .goods-content {
     margin-top: pr(24px);
     background-color: #fff;
-    .sticky-wrap {
-      height: pr(88px);
+    .swiper-slide{
+      background-color: #fff;
+      overflow: hidden;
+      img{
+        float: left;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
     }
   }
   .bot-nav {
@@ -275,6 +241,7 @@ export default {
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 2;
     height: pr(100px);
     line-height: pr(100px);
     text-align: center;
@@ -298,6 +265,9 @@ export default {
     .now-buy {
       background-color: #e3393c;
     }
+  }
+  .right-wrap{
+    height: 100%;
   }
 }
 </style>
