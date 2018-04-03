@@ -17,7 +17,7 @@
             </div>
         </div>
         <spec-choose :specData="specData"></spec-choose>
-        <number-box :min="3" :max="100" :step="2" v-model="val"></number-box>
+        <number-box :min="2" :max="5" :step="2" v-model="val"></number-box>
         <ul class="spec-footer">
             <li>加入购物车</li>
             <li>立即购买</li>
@@ -32,24 +32,19 @@ import numberBox from './numberBox'
 export default {
   data() {
     return {
-      val: '',   //商品数量数量
+      val: 1,   //商品数量数量
     };
   },
   methods: {
     hidePop() {
       this.$emit("hideSpec");
-    }
+    },
   },
   components: {
     specChoose,     //规格选择
     numberBox,      //数量选择
   },
   props:['specData'],
-  watch:{
-    val: function (newVal, oldVal){
-      console.log(newVal);
-    }
-  }
 };
 </script>
 

@@ -3,7 +3,7 @@
     <p>数量</p>
     <div class="cal">
       <div class="cal-btn" @click="cal(false)">-</div>
-      <input type="text" v-model="goodsNum" class="cal-inp" :disabled="!editgoods">
+      <input type="text" v-model="goodsNum" @blur="inpBlur" class="cal-inp" :disabled="!editgoods">
       <div class="cal-btn" @click="cal(true)">+</div>
     </div>
   </div>
@@ -27,36 +27,38 @@ export default {
     editgoods: {
       type: Boolean,
       default: true
+    },
+    value: {
+      type: Number,
     }
   },
   data(){
     return {
-      goodsNum: this.min || '1',
-      stepNum: this.step || '1',
+      goodsNum: this.value < this.min ? this.min : (this.value > this.max ? this.max : this.value),
+      stepNum: this.step || 1,
     }
   },
   methods:{
     cal(bol){   //加减数量
       if (bol){
-        (this.goodsNum + this.stepNum <= this.max) && (this.goodsNum += this.stepNum);
+        (this.goodsNum + this.stepNum <= this.max) && (this.goodsNum += this.stepNum) || (this.goodsNum + this.stepNum > this.max) && (this.goodsNum = this.max);
       }else{
-        (this.goodsNum - this.stepNum >= this.min) && (this.goodsNum -= this.stepNum);
+        (this.goodsNum - this.stepNum >= this.min) && (this.goodsNum -= this.stepNum) || (this.goodsNum - this.stepNum < this.min) && (this.goodsNum = this.min);
       }
-    }
-  },
-  watch: {
-    goodsNum: function (newVal, oldVal){
-      this.goodsNum -= 0;    //隐式转换成number类型
-      if (newVal > this.max){
-        this.goodsNum = this.max;
-      }
-      if (newVal < this.min){
-        this.goodsNum = this.min;
-      }
+      this.$emit('input', this.goodsNum);
+    },
+    inpBlur(){
+      (this.goodsNum > this.max) && (this.goodsNum = this.max);
+      (this.goodsNum < this.min) && (this.goodsNum = this.min);
       this.$emit('input', this.goodsNum);
     }
   },
-
+  created(){
+    if (this.min > this.max){
+      console.warn('min不能大于max');
+    }
+    
+  }
 }
 </script>
 
