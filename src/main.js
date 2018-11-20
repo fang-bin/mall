@@ -38,7 +38,7 @@ const toast = function (txt){
 }
 
 utils.removeSession('count');
-let historyCount = utils.getSession('count') *1 || 0;
+let historyCount = utils.getSession('count') * 1 || 0;
 utils.setSession('/', 0);
 router.beforeEach((to, from, next) => {
   //播放加载动画

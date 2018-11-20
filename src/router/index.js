@@ -6,6 +6,7 @@ import { resolve } from 'url'
 const home = r => require.ensure([], () => r(require('../page/home/home.vue')), 'home');
 const error = r => require.ensure([], () => r(require('../page/error/error.vue')), 'error');
 const goods = r => require.ensure([], () => r(require('../page/goods/goods.vue')), 'goods');
+const mine = r => require.ensure([], () => r(require('../page/mine/mine.vue')), 'mine');
 
 Vue.use(Router)
 
@@ -39,6 +40,14 @@ export default new Router({
       },
       component: goods,
       props: true
+    },
+    {
+      path: '/mine',
+      name: 'name',
+      meta: {
+        title: '我都商城'
+      },
+      component: mine
     }
   ]
 })

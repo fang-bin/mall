@@ -9,7 +9,7 @@
             <!-- 导航栏 -->
             <ul class="nav-box">
                 <li>
-                    <router-link to="###">
+                    <router-link to="/mine">
                         <img src="../../img/my-mall.png">
                         <p>我的商城</p>
                     </router-link>
