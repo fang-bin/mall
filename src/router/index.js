@@ -21,7 +21,7 @@ export default new Router({
       component: home
     },
     {
-      path: '/error',
+      path: '/error/error/error/error',
       name: 'error',
       meta: {
         title: '错误'
@@ -30,7 +30,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/error'
+      redirect: '/error/error/error/error'
     },
     {
       path: '/goodDetail/:id',      //商品详情页
